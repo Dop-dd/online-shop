@@ -13,6 +13,9 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
+    # foreign key to link products to categories
+    category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE, null=True)
+
     title = models.CharField(max_length=250)
     brand = models.CharField(max_length=250, default='un-branded')
     Description = models.TextField(blank=True)
