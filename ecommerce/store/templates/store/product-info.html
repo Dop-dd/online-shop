@@ -12,23 +12,23 @@
 
             <div class="col-md-5 col-lg-5 order-md-first bg-light">
 
-                <img class="img-fluid mx-auto d-block" alt="Responsive image" src=""> <!-- Product image -->
+                <img class="img-fluid mx-auto d-block" alt="Responsive image" src="{{ product.image.url }}"> <!-- Product image -->
 
             </div>
 
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
 
-                <h1 class="mb-0 h4"> <!-- Product title --> </h1>
+                <h1 class="mb-0 h4">{{ product.title }}</h1><!-- Product title -->
 
-                <strong> <!-- Product brand --> </strong>
+                <strong>{{ product.brand }}</strong> <!-- Product brand -->
 
 
                 <hr>
 
                 <br>
 
-
-                <p> <!-- Product description --> </p>
+                <!-- Product description -->
+                <p>{{ product.Description }}</p>
 
                 <div class="border">
 
@@ -38,7 +38,7 @@
 
                             <div class="col-6"> Price </div>
 
-                            <div class="col-6 text-end"><span class="h4 fw-bold">$ <!-- Product price --> </span></div>
+                            <div class="col-6 text-end"><span class="h4 fw-bold">$ {{ product.price }}</span></div> <!-- Product price -->
 
                         </div>
 

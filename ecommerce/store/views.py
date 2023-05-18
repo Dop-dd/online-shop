@@ -16,10 +16,17 @@ def categories(request):
     return {'all_categories': all_categories}
     # add the view to context processor in settings to loop  on all pages - 'store.views.categories'
 
+def list_category(request, category_slug=None):
+    category = get_object_or_404(Category, slug=category_slug)
+    products = Product.objects.filter(category=category)
+
+    return render(request, 'store/list-category.html', {'category': category, 'products': products})
+
+
 # get an individual produt from the db
-def product_info(request, slug):
-    product = get_object_or_404(Product, slug=slug)
+def product_info(request, product_slug):
+    product = get_object_or_404(Product, slug=product_slug)
     context = {'product': product}
-    
+
     return render(request, 'store/product-info.html', context)
 
