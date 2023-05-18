@@ -60,6 +60,14 @@
                     <li>
                         <a class="dropdown-item" href="{% url 'store' %}"> All </a>
                     </li>
+
+                    <!-- loop to display categories-->
+                    {% for category in all_categories %}
+                    <li>
+                        <a class="dropdown-item" href="">{{ category.name | capfirst }} </a>
+                    </li>
+
+                    {% endfor %}
                 </ul>
             </li>
         </ul>
