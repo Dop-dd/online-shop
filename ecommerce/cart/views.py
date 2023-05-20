@@ -10,12 +10,15 @@ from django.http import JsonResponse
 
 # Create your views here.
 def cart_summary(request):
+    cart = Cart(request)
 
-    return render(request, 'cart/cart-summary.html')
+    return render(request, 'cart/cart-summary.html', {'cart':cart})
+
 
 def cart_add(request):
     # grab the ajax code we created to add item quantity
     cart = Cart(request)
+
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('product_id'))
         product_quantity = int(request.POST.get('product_quantity'))
@@ -29,6 +32,7 @@ def cart_add(request):
 
         response = JsonResponse({'qty': cart_quantity})
         return response
+
 
 def cart_delete(request):
     pass
