@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.views.categories', # updated for processor
+                'cart.context_processors.cart', # make session wide
             ],
         },
     },
