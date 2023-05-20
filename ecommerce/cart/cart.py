@@ -23,3 +23,11 @@ class Cart():
 
         self.session.modified = True
 
+
+    """  create a new function to get the links of the total products in our session."""
+
+    def __len__(self):
+        return sum(item['qty'] for item in self.cart.values())
+
+
+
