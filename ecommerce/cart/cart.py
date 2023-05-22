@@ -36,6 +36,17 @@ class Cart():
         self.session.modified = True
 
 
+    def update(self, product, qty):
+        product_id = str(product)
+        product_quantity = qty
+
+        # check if product in basket, override it
+        if product_id in self.cart:
+            self.cart[product_id]['qty'] = product_quantity
+
+        self.session.modified = True
+
+
     """  create a new function to get the links of the total products in our session."""
 
     def __len__(self):
@@ -47,7 +58,10 @@ class Cart():
         all_product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=all_product_ids)
 
-        cart =  self.cart.copy()
+        import copy
+        cart = copy.deepcopy(self.cart)
+
+        # cart =  self.cart.copy() this makes a shaloow copy of our db whch i not ideal
 
         for product in products:
             cart[str(product.id)]['product'] = product
