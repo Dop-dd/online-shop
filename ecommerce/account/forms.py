@@ -7,11 +7,14 @@ class CreateUserForm(UserCreationForm):
     class Meta:
 
         model = User
-        fields = ['username', 'amail', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
 
     # make emails unique
     def __init__(self, *args, **kwargs):
-        super(CreateUserForm, self).__init__(*args, **kwargs)()
+        super(CreateUserForm, self).__init__(*args, **kwargs)
+
+        # mark email field as required
+        self.fields['email'].required = True
 
 
     # email validation
@@ -20,6 +23,8 @@ class CreateUserForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError('This email is invalid')
 
-        if len(email >= 350):
+        if len(email) >= 350:
             raise forms.ValidationError('Your email is too long')
+
+        return email
 

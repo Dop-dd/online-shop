@@ -1,2 +1,54 @@
+{% include "store/base.html" %}
 
-<h1> register</h1>
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!-- gray out the background in order to highlight the form - inline css for this page only --->
+
+    <style>
+
+        body {
+            background-color: gray;
+        }
+
+    </style>
+
+    <body>
+        <br>
+        <div class="container bg-white shadow p-5 form-layout">
+
+            <h3> create your account</h3>
+            <h5> Purchase an item now</h5>
+            <br>
+            <br>
+
+            <form method="post" autocomplete="off">
+
+                {% csrf_token %}
+
+                {{form.username|as_crispy_field}}
+                <br><br>
+
+                {{form.email|as_crispy_field}}
+                <br><br>
+
+                {{form.password1|as_crispy_field}}
+                <br>
+
+                {{form.password2|as_crispy_field}}
+
+                <br><br>
+
+                <button type="submit" class="btn btn-success btn-lg w-100 btn-block p-2" >&nbsp;Create an account</button>
+
+            </form>
+
+        </div>
+    </body>
+    <br><br>
+
+{% endblock %}
+
