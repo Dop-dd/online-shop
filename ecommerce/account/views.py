@@ -5,7 +5,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import User
 
 # import our custome made domain
-from .token import user_tokenizer_generate
+from . token import user_tokenizer_generate
 
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
@@ -42,20 +42,20 @@ def register(request):
 
             user.email_user(subject=subject, message=message)
 
-            return render('email-verification-sent')
-
+            return redirect('email-verification-sent')
 
 
     # use the form in the register template
     context = {'form': form}
 
-
     return render(request, 'account/registration/register.html', context=context)
 
 
+
 def email_verification(request, uidb64, token):
-    uid = force_str(urlsafe_base64_decode(uidb64))
-    user = user.objects.get(pk=id)
+    # unique id
+    unique_id = force_str(urlsafe_base64_decode(uidb64))
+    user = User.objects.get(pk=unique_id)
 
     # success
     if user and user_tokenizer_generate.check_token(user, token):
@@ -70,16 +70,16 @@ def email_verification(request, uidb64, token):
 
 
 def email_verification_sent(request):
-    pass
+    return render(request, 'account/registration/email-verification-sent.html')
 
 
 def email_verification_success(request):
-    pass
+    return render(request, 'account/registration/email-verification-success.html')
 
 
 
 def email_verification_failed(request):
-    pass
+    return render(request, 'account/registration/email-verification-fail.html')
 
 
 def dashboard(request):
