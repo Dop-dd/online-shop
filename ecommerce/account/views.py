@@ -79,7 +79,7 @@ def email_verification_success(request):
 
 
 def email_verification_failed(request):
-    return render(request, 'account/registration/email-verification-fail.html')
+    return render(request, 'account/registration/email-verification-failed.html')
 
 
 def dashboard(request):
