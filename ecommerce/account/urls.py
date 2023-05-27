@@ -15,9 +15,14 @@ urlpatterns = [
 
     path('email-verification-failed', views.email_verification_failed, name='email-verification-failed'),
 
-    # email account URLs
-     path('dashboard', views.dashboard, name='dashboard'),
-
+     # login
     path('my-login', views.my_login, name='my-login'),
+
+     # logout URLs
+    path('user-logout', views.user_logout, name='user-logout'),
+
+    # email account URLs
+    path('dashboard', views.dashboard, name='dashboard'),
+
 
     ]
