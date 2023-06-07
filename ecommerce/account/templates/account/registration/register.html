@@ -11,7 +11,7 @@
     <style>
 
         body {
-            background-color: gray;
+            background-color: lightgray;
         }
 
     </style>
@@ -22,7 +22,7 @@
 
             <h3> create your account</h3>
             <h5> Purchase an item now</h5>
-            <br>
+            <hr>
             <br>
 
             <form method="post" autocomplete="off">
@@ -42,7 +42,13 @@
 
                 <br><br>
 
-                <button type="submit" class="btn btn-success btn-lg w-100 btn-block p-2" >&nbsp;Create an account</button>
+                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2" >&nbsp;Create an account</button>
+                <br>
+
+                <div class="text-center">
+                    <br>
+                    <a href="{% url 'my-login' %}">Already have an account?</a>
+                </div>
 
             </form>
 

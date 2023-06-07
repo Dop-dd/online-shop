@@ -17,11 +17,11 @@
 
 <body>
     <br>
-    <div class="container bg-white shadow p-3 form-layout-dashboard">
+    <div class="container bg-white shadow p-5 form-layout">
 
-        <h4>Hi {{user}}</h4>
+        <h4><i class="fa fa-user-circle-o" aria-hidden="true" style="color:orange"></i>&nbsp; Hi {{user}}</h4>
         <hr>
-        <p><bold> Welcome to your Dashboard </bold></p>
+        <p><bold>Welcome to your Dashboard </bold></p>
 
         <li> Track your orders </li>
         <li> Manage your accouunt </li>
@@ -32,6 +32,9 @@
 
         <h4> Track your orders </h4>
         <hr>
+
+        <p>Track all your ordered items here</p>
+
         <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> My Orders </a>
 
     </div>
@@ -42,18 +45,13 @@
 
         <h4> Manage your accouunt </h4>
         <hr>
-        <br>
-        <div class="row">
-        <div class="col-md-6 text-left">
+        <p>Edit or delete your account here</p>
         <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'profile-management' %}"> My Profile </a>
-    </div>
 
     <br>
-
-    <div class="col-md-6  text-right">
+    <!-- <div class="col-md-6  text-right">
         <a class="btn btn-danger navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> Logout </a>
-    </div>
-    </div>
+    </div> -->
 
     </div>
 

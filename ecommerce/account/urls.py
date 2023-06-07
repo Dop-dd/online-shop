@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+# use django built-in password views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     # store main page
@@ -25,7 +28,11 @@ urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
 
     path('profile-management', views.profile_management, name='profile-management'),
-    
+
     path('delete-account', views.delete_account, name='delete-account'),
+
+
+    # password management
+    
 
     ]
