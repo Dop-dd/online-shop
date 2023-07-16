@@ -30,3 +30,5 @@ def product_info(request, product_slug):
 
     return render(request, 'store/product-info.html', context)
 
+
+

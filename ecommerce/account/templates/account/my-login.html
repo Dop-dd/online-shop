@@ -20,7 +20,7 @@
         <br>
         <div class="container bg-white shadow p-5 form-layout">
 
-            <h3> Log in to your account</h3>
+            <h4> Log in to your account</h4>
             <hr><br>
 
             <form method="post" autocomplete="off">
@@ -38,12 +38,14 @@
                     <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp; Login </button>
                 <br>
 
+                {{form.non_field_errors}}
+
                 <div class="text-center">
                     <br>
                     <a href="{% url 'register' %}">Don't have an account?</a>
                     <br>
                     <br>
-                    <a href="{% url 'my-login' %}">Forgotten your password?</a>
+                    <a href="{% url 'reset_password' %}">Forgotten your password?</a>
                 </div>
 
             </form>

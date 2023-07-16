@@ -35,16 +35,15 @@ urlpatterns = [
     # ----- password management -----------
 
     #1 submit our email form
-    path('reset_password', auth_views.PasswordResetView.as_view(), name='reset_password'),
+    path('reset_password', auth_views.PasswordResetView.as_view(template_name="account/password/password-reset.html"), name='reset_password'),
 
     #2 success message to confirm email reset was sent
-    path('reset_password_sent', auth_views.PasswordResetDone.as_view(), name='reset_password_done'),
+    path('reset_password_sent', auth_views.PasswordResetDoneView.as_view(template_name="account/password/password-reset-sent.html"), name='password_reset_done'),
 
     #3 password reset link
-    path('ret/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="account/password/password-reset-form.html"), name='password_reset_confirm'),
 
     #4 success message stating password as reset
-    path('reset_password_complete', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_commplete'),
-
+    path('reset_password_complete', auth_views.PasswordResetCompleteView.as_view(template_name="account/password/password-reset-complete.html"), name='password_reset_complete'),
 
     ]
