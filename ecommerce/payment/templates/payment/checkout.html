@@ -49,7 +49,7 @@
 
 
                     <div class="form-field">
-                        <input class="form-control validate" id="address2" type="text" placeholder="Address 2" autocomplete="off" value="{{shipping.address2}}" required>
+                        <input class="form-control validate" id="address2" type="text" placeholder="Address 2" autocomplete="off" value="{{shipping.address2}}">
 
                     </div>
                     <br>
@@ -91,7 +91,43 @@
 
     <script>
 
+        $(document).on('submit', function(e){
+            e.preventDefault();
 
+            $.ajax({
+                type: 'POST',
+                url: '{% url "complete-order" %}',
+                data: {
+
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+
+                    address1: $('#address1').val(),
+                    address2: $('#address2').val(),
+                    city: $('#city').val(),
+
+                    state: $('#state').val(),
+                    zipcode: $('#zipcode').val(),
+
+                    csrfmiddlewaretoken: "{{csrf_token}}",
+                    action: 'post'
+                },
+
+                success: function(json){
+                    //console.log(json)
+
+                    window.location.replace("{% url 'payment-success' %}");
+
+                },
+                error: function(xhr, errmsg, err){
+
+                    window.location.replace("{% url 'payment-failed' %}");
+
+                }
+
+            });
+
+        })
 
 
    </script>
