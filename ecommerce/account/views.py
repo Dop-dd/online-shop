@@ -4,6 +4,8 @@ from .forms import CreateUserForm, LoginForm, UpdateUserForm
 from payment.forms import ShippingForm
 from payment.models import ShippingAddress
 
+from payment.models import Order, OrderItem
+
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import User
 
@@ -216,5 +218,22 @@ def manage_shipping(request):
     context = {'form': form}
 
     return render(request, 'account/manage-shipping.html', context=context)
+
+
+# track orders
+@login_required(login_url='my-login')
+def track_orders(request):
+
+     try:
+
+        orders = OrderItem.objects.filter(user=request.user)
+
+        context = {'orders':orders}
+
+        return render(request, 'account/track-orders.html', context=context)
+
+     except:
+
+        return render(request, 'account/track-orders.html')
 
 

@@ -149,3 +149,7 @@ EMAIL_USE_TLS = 'True'
 
 EMAIL_HOST_USER = 'thingscommute@gmail.com'
 EMAIL_HOST_PASSWORD = 'mxzqqhwjtrrdlgav'
+
+
+# Allow Paypal Popups
+SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'

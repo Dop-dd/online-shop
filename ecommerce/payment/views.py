@@ -92,10 +92,6 @@ def complete_order(request):
             return response
 
 
-
-
-
-
 def payment_success(request):
 
     # clear the shopping cart once items are bought
@@ -110,3 +106,6 @@ def payment_success(request):
 def payment_failed(request):
 
     return render(request, 'payment/payment-failed.html')
+
+
+
